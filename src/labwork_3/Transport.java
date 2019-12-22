@@ -28,7 +28,7 @@ class Transport {
     }
     
     Transport (){
-        make = "";
+        make = "No name";
         date.day = 00;
         date.month = 00;
         date.year = 0000;
@@ -54,6 +54,12 @@ class Transport {
         this.date.month = month;
         this.date.year = year;
     }
+    
+    public static void minusCountOfObject() {
+		count--;
+	}
+    
+    
     
     //Getter
     public String getMake (){

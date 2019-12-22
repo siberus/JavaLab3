@@ -9,9 +9,16 @@ package labwork_3;
  *
  * @author admin
  */
-public class Car extends Transport {
+class Car extends Transport {
     String type;
     String model;
+    
+    Car (){
+        super();
+        this.model = "no model";
+        this.type = "no type";
+    }
+    
     Car (String make, int day, int month, int year, String model, String type){
         super (make, day, month, year);
         this.model = model;
