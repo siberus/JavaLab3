@@ -80,5 +80,17 @@ class Transport {
     public static int getCountOfObject() {
 		return count;
 	}
-    
+
+
+	//Переопределение функций сравнения
+
+    @Override
+    public boolean equals(Object compareObject){
+        if (this == compareObject) return true;
+        if (compareObject == null) return false;
+        if (getClass() != compareObject.getClass()) return false;
+        Transport object = (Transport) compareObject;
+        return date.day == object.date.day && date.month == object.date.month && date.year == object.date.year && make.equals(object.make);
+
+    }
 }

@@ -22,7 +22,7 @@ class Express extends Train{
         this.name = name;
     }
     
-     //Setterы
+     //Setter
     public void setName(String name){
         this.name = name;
     }
@@ -32,4 +32,16 @@ class Express extends Train{
     public String getName (){
         return this.name;
     }
+
+
+    @Override
+    public boolean equals(Object compareObject){
+        if (this == compareObject) return true;
+        if (compareObject == null) return false;
+        if (getClass() != compareObject.getClass()) return false;
+        Express object = (Express) compareObject;
+        return date.day == object.date.day && date.month == object.date.month && date.year == object.date.year && make.equals(object.make) && length == object.length && name.equals(object.name);
+
+    }
+
 }

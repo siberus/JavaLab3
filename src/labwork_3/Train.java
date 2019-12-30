@@ -33,5 +33,15 @@ class Train extends Transport{
         return this.length;
     }
     
-   
+   //Переопределение функции Equals
+
+    @Override
+    public boolean equals(Object compareObject){
+        if (this == compareObject) return true;
+        if (compareObject == null) return false;
+        if (getClass() != compareObject.getClass()) return false;
+        Train object = (Train) compareObject;
+        return date.day == object.date.day && date.month == object.date.month && date.year == object.date.year && make.equals(object.make) && length == object.length;
+
+    }
 }

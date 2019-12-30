@@ -41,9 +41,10 @@ public class LabWork_3 {
                         if (submenu1 > 0 & submenu1 < 5){
                             fMenu(3);
                             submenu2 = in.nextInt();
-                            //in.nextLine();
+                            in.nextLine();
                             if (submenu2 > 0 & submenu2 < 3){
-                            inputTransport(transport, submenu1, submenu2);
+                            inputTransport(transport, submenu1, submenu2, in);
+                                System.out.println("Testpoint." + Transport.getCountOfObject() );
                             }
                             submenu1 = 0;
                         }
@@ -60,19 +61,21 @@ public class LabWork_3 {
                 case 2:
                     System.out.println("Выбран второй пункт меню.");
                     if(transport.size()== 0) {
-			System.out.println("Список объектов пуст!");
+			            System.out.println("Список объектов пуст!");
                         in.nextLine();
                     }
                     else {
                         System.out.println("Введите индекс удаляемого объекта: ");
+                        System.out.println("Доступны объекты с индексом от 0 до " + (Transport.getCountOfObject() - 1));
                         int removeObjIndex = in.nextInt();	
                         if(removeObjIndex < 1 || removeObjIndex > transport.size()) {
-						System.out.println("Введенный вами индекс больше " + transport.size() + "или мешьше 1" );
-						break;
-					}
-					
-					transport.remove(removeObjIndex - 1);	
-					Transport.minusCountOfObject();
+						    System.out.println("Введенный вами индекс больше " + transport.size() + "или мешьше 1" );
+					    }
+                        else {
+                            transport.remove(removeObjIndex - 1);
+                            Transport.minusCountOfObject();
+                        }
+
                     }
                         
                     break;
@@ -95,6 +98,13 @@ public class LabWork_3 {
                     System.out.println("Выбран четвертый пункт меню.");
                     if (transport.size() != 0){
                             // Вызов метода сравнения
+                        System.out.println("Доступны объекты с индексом от 0 до " + (Transport.getCountOfObject() - 1));
+                        System.out.println("Введите индекс первого объекта");
+                        int firstObj = in.nextInt();
+                        System.out.println("Введите индекс второго объекта");
+                        int secondObj = in.nextInt();
+
+                        System.out.println("Результат сравнения = " + transport.get(firstObj).equals(transport.get(secondObj)));
                         }
                         else {
                             System.out.println("Список пуст!");
@@ -110,8 +120,11 @@ public class LabWork_3 {
                     System.out.println("Выбран не верный пункт меню!");
             } 
         }while (mainmenu != 0);
+
+
+        in.close();
         System.out.println("Работа программы завершена!");
-                
+
         
       
      
@@ -120,18 +133,18 @@ public class LabWork_3 {
       
     }
     
-    private static void inputTransport (ArrayList<Transport> transport, int classNumber, int constructNumber){
-        Scanner in2 = new Scanner(System.in);
+    private static void inputTransport (ArrayList<Transport> transport, int classNumber, int constructNumber, Scanner in){
+        //Scanner in2 = new Scanner(System.in);
         switch (classNumber){
             case 1:
                 if (constructNumber == 1){
                     System.out.println("Введите производителя транспортного средства:");
-                    String tmpString = in2.nextLine();
+                    String tmpString = in.nextLine();
                     System.out.println("Введите дату производства транспортного средства (последовательно день, месяц, год):");
-                    int tmp1 = in2.nextInt();
-                    int tmp2 = in2.nextInt();
-                    int tmp3 = in2.nextInt();
-                    in2.nextLine();
+                    int tmp1 = in.nextInt();
+                    int tmp2 = in.nextInt();
+                    int tmp3 = in.nextInt();
+                    in.nextLine();
                     transport.add(new Transport(tmpString, tmp1, tmp2, tmp3));
                 }
                 else {
@@ -141,16 +154,16 @@ public class LabWork_3 {
             case 2:
                 if (constructNumber == 1){
                     System.out.println("Введите производителя автомобиля:");
-                    String tmpString = in2.nextLine();
+                    String tmpString = in.nextLine();
                     System.out.println("Введите дату производства автомобиля (последовательно день, месяц, год):");
-                    int tmp1 = in2.nextInt();
-                    int tmp2 = in2.nextInt();
-                    int tmp3 = in2.nextInt();
-                    in2.nextLine();
+                    int tmp1 = in.nextInt();
+                    int tmp2 = in.nextInt();
+                    int tmp3 = in.nextInt();
+                    in.nextLine();
                     System.out.println("Введите модель автомобиля:");
-                    String tmpString2 = in2.nextLine();
+                    String tmpString2 = in.nextLine();
                     System.out.println("Введите тип автомобиля:");
-                    String tmpString3 = in2.nextLine();
+                    String tmpString3 = in.nextLine();
                     transport.add(new Car(tmpString, tmp1, tmp2, tmp3,  tmpString2,  tmpString3));
                 }
                 else {
@@ -160,17 +173,17 @@ public class LabWork_3 {
             case 3:
                 if (constructNumber == 1){
                     System.out.println("Введите производителя поезда:");
-                    String tmpString = in2.nextLine();
+                    String tmpString = in.nextLine();
                     System.out.println("Введите дату производства поезда (последовательно день, месяц, год):");
-                    int tmp1 = in2.nextInt();
-                    int tmp2 = in2.nextInt();
-                    int tmp3 = in2.nextInt();
-                    in2.nextLine();
+                    int tmp1 = in.nextInt();
+                    int tmp2 = in.nextInt();
+                    int tmp3 = in.nextInt();
+                    in.nextLine();
                     System.out.println("Введите длину состава поезда:");
-                    int tmp4 = in2.nextInt();
-                    in2.nextLine();
+                    int tmp4 = in.nextInt();
+                    in.nextLine();
                     System.out.println("Введите модель автомобиля:");
-                    String tmpString2 = in2.nextLine();
+                    String tmpString2 = in.nextLine();
                     transport.add(new Express(tmpString, tmp1, tmp2, tmp3,  tmp4, tmpString2));
                 }
                 else {
@@ -180,15 +193,15 @@ public class LabWork_3 {
             case 4:
                 if (constructNumber == 1){
                     System.out.println("Введите производителя поезда:");
-                    String tmpString = in2.nextLine();
+                    String tmpString = in.nextLine();
                     System.out.println("Введите дату производства поезда (последовательно день, месяц, год):");
-                    int tmp1 = in2.nextInt();
-                    int tmp2 = in2.nextInt();
-                    int tmp3 = in2.nextInt();
-                    in2.nextLine();
+                    int tmp1 = in.nextInt();
+                    int tmp2 = in.nextInt();
+                    int tmp3 = in.nextInt();
+                    in.nextLine();
                     System.out.println("Введите длину состава поезда:");
-                    int tmp4 = in2.nextInt();
-                    in2.nextLine();
+                    int tmp4 = in.nextInt();
+                    in.nextLine();
                     transport.add(new Train(tmpString, tmp1, tmp2, tmp3,  tmp4));
                 }
                 else {
@@ -197,7 +210,7 @@ public class LabWork_3 {
                 break;    
         }
         
-        in2.close();
+        //in.close();
        
     }
     
@@ -234,24 +247,24 @@ public class LabWork_3 {
     
     private static void outputArrayTransport(ArrayList<Transport> transport){
         for(Object x : transport) {
-            if (x instanceof Transport){
+            if (x.getClass() == Transport.class) {
                 System.out.println("Производитель " + ((Transport) x).getMake());
                 System.out.printf("Дата производства %02d.%02d.%04d \n\n",  ((Transport) x).getDay(), ((Transport) x).getMonth(),  ((Transport) x).getYear());
             }
-            if (x instanceof Car){
+            if (x.getClass() == Car.class){
                 System.out.println("Производитель " + ((Car) x).getMake());
                 System.out.printf("Дата производства %02d.%02d.%04d \n",  ((Car) x).getDay(), ((Car) x).getMonth(),  ((Car) x).getYear());
                 System.out.println("Модель " +  ((Car) x).getModel());
                 System.out.println("Тип " +  ((Car) x).getType());
                 System.out.println();
             }
-            if (x instanceof Train){
+            if (x.getClass() == Train.class){
                 System.out.println("Производитель " + ((Train) x).getMake());
                 System.out.printf("Дата производства %02d.%02d.%04d \n",  ((Train) x).getDay(), ((Train) x).getMonth(),  ((Train) x).getYear());
                 System.out.println("Длина состава " +  ((Train) x).getLength());
                 System.out.println();
             }
-            if (x instanceof Express){
+            if (x.getClass() ==  Express.class){
                 System.out.println("Производитель " + ((Express) x).getMake());
                 System.out.printf("Дата производства %02d.%02d.%04d \n",  ((Express) x).getDay(), ((Express) x).getMonth(),  ((Express) x).getYear());
                 System.out.println("Длина состава " +  ((Express) x).getLength());

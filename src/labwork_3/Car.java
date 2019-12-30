@@ -45,6 +45,16 @@ class Car extends Transport {
      public String getType (){
         return this.type;
     }
-    
+
+
+    @Override
+    public boolean equals(Object compareObject){
+        if (this == compareObject) return true;
+        if (compareObject == null) return false;
+        if (getClass() != compareObject.getClass()) return false;
+        Car object = (Car) compareObject;
+        return date.day == object.date.day && date.month == object.date.month && date.year == object.date.year && make.equals(object.make) && model.equals(object.model) && type.equals(object.type);
+
+    }
     
 }
